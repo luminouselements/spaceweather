@@ -98,7 +98,7 @@ For the other Meshtastic cron jobs listed in
 ..., 55`:
 
 ```cron
-5-55/5 * * * * cd /scripts/spaceweather && /usr/bin/timeout 240 /usr/bin/python3 /scripts/spaceweather/spaceweather_alerts.py >> /scripts/logs/spaceweather_alerts_cron.log 2>&1
+5-55/5 * * * * cd /scripts/spaceweather && /usr/bin/timeout 240 /usr/bin/python3 /scripts/spaceweather/spaceweather_alerts.py >> /scripts/logs/spaceweather_alerts.log 2>&1
 ```
 
 This deliberately skips the `:00` run each hour to avoid starting at the same
