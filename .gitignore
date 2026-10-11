@@ -1,0 +1,21 @@
+# Environment and secrets
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+
+# Runtime output
+logs/
+*.log
+processed_swpc_products.txt
+
+# IDE and operating system
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
