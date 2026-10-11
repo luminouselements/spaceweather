@@ -3,7 +3,7 @@
 Poll NOAA's Space Weather Prediction Center (SWPC) public alerts feed and relay
 new **ALERT**, **WATCH**, and **WARNING** products to a Meshtastic node over TCP.
 
-The script defaults to node `192.168.50.49` and channel index `2`. Messages use
+The script defaults to node `192.168.0.1` and channel index `2`. Messages use
 a compact, multiline format with severity emoji, NOAA scale (when available),
 issue time, a short detail, and a link to the official SWPC alerts page. Each
 message is kept within both 200 characters and 200 UTF-8 bytes.
