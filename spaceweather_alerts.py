@@ -46,7 +46,7 @@ SWPC_URL = "https://services.swpc.noaa.gov/products/alerts.json"
 SWPC_ALERTS_PAGE = (
     "https://orbitalradar.com/space-weather"
 )
-NODE_IP = os.environ.get("MESHTASTIC_NODE_IP", "192.168.50.49")
+NODE_IP = os.environ.get("MESHTASTIC_NODE_IP", "192.168.0.1")
 
 _channels_value = os.environ.get("MESHTASTIC_CHANNELS")
 if _channels_value is None:
