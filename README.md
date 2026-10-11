@@ -59,7 +59,7 @@ precedence over the example defaults. Never commit `.env`.
 
 | Variable | Default | Description |
 | --- | --- | --- |
-| `MESHTASTIC_NODE_IP` | `192.168.50.49` | Host name or IP address of the Meshtastic TCP node. |
+| `MESHTASTIC_NODE_IP` | `192.168.0.1` | Host name or IP address of the Meshtastic TCP node. |
 | `MESHTASTIC_CHANNELS` | `2` | Comma-separated channel indexes, e.g. `2,4`. Duplicate indexes are removed. |
 | `MESHTASTIC_CHANNEL` | `2` | Single-channel compatibility setting; used only if `MESHTASTIC_CHANNELS` is unset. |
 | `MAX_MESSAGE_LENGTH` | `200` | Desired payload ceiling. The script always caps it at 200; smaller values shorten the title and detail. Set it large enough to retain the message header. |
