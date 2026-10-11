@@ -1,25 +1,7 @@
 # Example schedule for the related Meshtastic jobs described in README.md.
 # Jobs that use flock must use the same lock path as Space Weather:
 # /tmp/meshtastic-node.lock
-
-# Local weather report: hourly at minute 0
-0 * * * * /usr/bin/flock -w 45 /tmp/meshtastic-node.lock /usr/bin/timeout 60 /usr/bin/python3 /scripts/meshcron.py >> /scripts/logs/mesh_weather_cron.log 2>&1
-
-# NOAA weather advisories: minutes 1, 6, 11, ..., 56; locks internally
-1-56/5 * * * * /usr/bin/timeout 45 /usr/bin/python3 /scripts/noaalerts/noa_alerts.py >> /scripts/logs/noa_alerts_cron.log 2>&1
-
-# Earthquake events: minutes 2, 7, 12, ..., 57
-2-57/5 * * * * cd /scripts/eqevents && /usr/bin/flock -w 45 /tmp/meshtastic-node.lock /usr/bin/timeout 45 /usr/bin/python3 /scripts/eqevents/eqevents.py >> /scripts/logs/eqevents_cron.log 2>&1
-
-# Earthquake matrix: minutes 3, 8, 13, ..., 58
-3-58/5 * * * * cd /scripts/eqevents && /usr/bin/flock -w 45 /tmp/meshtastic-node.lock /usr/bin/timeout 45 /usr/bin/python3 /scripts/eqevents/eqmatrix.py >> /scripts/logs/eqmatrix_cron.log 2>&1
-
-# Volcano monitor: minutes 4, 9, 14, ..., 59
-4-59/5 * * * * cd /scripts/volcanos && /usr/bin/flock -w 45 /tmp/meshtastic-node.lock /usr/bin/timeout 90 /scripts/volcanos/.venv/bin/python /scripts/volcanos/volc.py --once >> /scripts/logs/volcano_cron.log 2>&1
-
 # SWPC Space Weather: minutes 5, 10, ..., 55; skips :00 to avoid hourly weather
 # Locks internally; do not add an outer flock.
-5-55/5 * * * * cd /scripts/spaceweather && /usr/bin/timeout 240 /usr/bin/python3 /scripts/spaceweather/spaceweather_alerts.py >> /scripts/logs/spaceweather_alerts_cron.log 2>&1
+5-55/5 * * * * cd /scripts/spaceweather && /usr/bin/timeout 240 /usr/bin/python3 /scripts/spaceweather/spaceweather_alerts.py >> /scripts/logs/spaceweather_alerts.log 2>&1
 
-# NASA NEO: four times daily; occasional same-minute starts are serialized by flock
-8 0,6,12,18 * * * /usr/bin/flock -w 45 /tmp/meshtastic-node.lock /usr/bin/timeout 60 /usr/bin/python3 /scripts/asteroidalert/nasaalert.py >> /scripts/logs/nasa_neo_cron.log 2>&1
